@@ -7,10 +7,45 @@ Python is a high-level, interpreted programming language known for its simplicit
 Python variables are dynamically typed, meaning they do not require explicit declaration of their type. A variable is created when a value is assigned to it:
 ```python
 x = 10      # Integer
-name = "Robot"  # String
+name = "Alejandra"  # String
 pi = 3.14  # Float
 ```
-Python provides different data structures such as lists, tuples, dictionaries, and sets for handling complex data efficiently.
+
+**Data Structures in Python**
+
+
+**Lists**
+
+Lists are ordered, mutable collections that can store elements of different data types:
+```python
+robots = ["Atlas", "Spot", "Pepper"]
+robots.append("Asimo")  # Add an element
+print(robots[0])  # Access first element
+```
+
+**Tuples**
+
+Tuples are similar to lists but immutable, meaning they cannot be modified after creation:
+```python
+coordinates = (10.5, 20.3)
+print(coordinates[0])  # Access first element
+```
+
+**Dictionaries**
+
+Dictionaries store key-value pairs, allowing efficient lookups:
+```python
+robot_specs = {"Atlas": "Humanoid", "Spot": "Quadruped"}
+print(robot_specs["Atlas"])  # Output: Humanoid
+```
+
+**Sets**
+
+Sets are unordered collections of unique elements, useful for eliminating duplicates:
+```python
+unique_sensors = {"Lidar", "Camera", "Radar", "Lidar"}
+print(unique_sensors)  # Output: {'Lidar', 'Camera', 'Radar'}
+```
 
 **Loop Structures in Python**
 
@@ -133,5 +168,4 @@ class RobotFSM:
 - Quigley, M., Gerkey, B., & Smart, W. D. (2015). *Programming Robots with ROS: A Practical Introduction to the Robot Operating System*. O'Reilly Media.
 - McKinney, W. (2012). *Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython*. O'Reilly Media.
 - Russell, S., & Norvig, P. (2020). *Artificial Intelligence: A Modern Approach*. Pearson.
-
 
