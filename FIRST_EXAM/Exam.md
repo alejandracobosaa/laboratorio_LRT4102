@@ -56,4 +56,3 @@ Create a ROS-based program that allows the user to select and draw geometric sha
 
 ---
 
-## Repository Structure
