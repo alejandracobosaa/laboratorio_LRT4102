@@ -80,3 +80,22 @@ This Python script is a ROS node that allows the user to control a turtle in the
 - **Exit**:
   - Exit the program by pressing the `q` key.
 
+---
+
+## Exercise 2: Rhombus and Pentagon
+
+### Description
+This Python script is a ROS node that allows the user to draw geometric shapes (rhombus and pentagon) using the turtlesim simulation environment. The user can select a shape, define the initial position of the turtle, and the program will draw the selected shape if all its corners are within the workspace. The turtle is controlled using a Proportional (P) controller for smooth movement.
+
+### Key Features:
+- **Shape Selection**:
+  -The user can choose between drawing a rhombus or a pentagon.
+- **Initial Position**:
+  - The user defines the initial position of the turtle.The program checks if all corners of the shape are within the workspace. If not, it notifies the user and requests a new position.Each turtle is given a unique name using a random integer.
+- **Drawing**:
+  - If all corners are within the workspace, the program draws the selected shape.
+  - The turtle's movement is controlled using a Proportional (P) controller for smooth transitions.
+- **Clear Screen:**:
+  - The screen is cleared before drawing a new shape by killing and respawning the turtle.
+- **Exit**:
+  - The user can exit the program by pressing the q key.
