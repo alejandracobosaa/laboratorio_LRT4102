@@ -99,3 +99,22 @@ This Python script is a ROS node that allows the user to draw geometric shapes (
   - The screen is cleared before drawing a new shape by killing and respawning the turtle.
 - **Exit**:
   - The user can exit the program by pressing the q key.
+
+---
+
+### Exercise 2: Square and Rhombus
+
+This exercise consists of a Python script that uses ROS to control a turtle in the `turtlesim` simulator. The program allows the user to draw a square or a rhombus in the workspace, based on the initial position provided. The code includes a proportional control system for precise turtle movement and an interactive menu to select the shape to draw.
+
+#### Features:
+- Interactive menu to choose between drawing a square or a rhombus.
+- Proportional control for precise movements.
+- Coordinate validation to ensure shapes are within the workspace.
+- Screen clearing before drawing a new shape.
+- Pen activation and deactivation for drawing lines.
+
+#### Execution:
+1. Ensure ROS is installed and configured.
+2. Run the `turtlesim` simulator.
+3. Run the Python script.
+4. Follow the menu instructions to draw the shapes.
