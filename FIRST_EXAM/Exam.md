@@ -55,4 +55,33 @@ Create a ROS-based program that allows the user to select and draw geometric sha
 4. **Repository**: The repository should follow the structure used in previous practices.
 
 ---
+# ROS Turtle Exercises
 
+This repository contains ROS-based exercises involving turtle simulation. The tasks are divided into two main parts:
+
+1. **Spawning Turtles**: A code to spawn 5 turtles at random positions.
+2. **Drawing Shapes**: A program that allows the user to select and draw geometric shapes using a turtle.
+
+---
+
+## Exercise 1: Five Turtles
+
+### Description
+This Python script is a ROS node that allows the user to control a turtle in the `turtlesim` simulation environment and spawn additional turtles at random positions. The user can move the turtle using keyboard inputs and spawn 5 turtles at random locations within the simulation workspace by pressing the `t` key.
+
+### Key Features:
+- **Turtle Control**:
+  - Move the turtle forward/backward in the X and Y directions.
+  - Rotate the turtle clockwise or counterclockwise.
+  - Stop the turtle's movement.
+- **Random Turtle Spawning**:
+  - Spawn 5 turtles at random positions and orientations within the workspace.
+  - Each turtle is given a unique name using a random integer.
+- **Exit**:
+  - Exit the program by pressing the `q` key.
+
+### How to Run:
+1. Ensure ROS and the `turtlesim` package are installed.
+2. Run the `turtlesim` node:
+   ```bash
+   rosrun turtlesim turtlesim_node
