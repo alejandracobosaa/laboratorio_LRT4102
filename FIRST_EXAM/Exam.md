@@ -80,8 +80,3 @@ This Python script is a ROS node that allows the user to control a turtle in the
 - **Exit**:
   - Exit the program by pressing the `q` key.
 
-### How to Run:
-1. Ensure ROS and the `turtlesim` package are installed.
-2. Run the `turtlesim` node:
-   ```bash
-   rosrun turtlesim turtlesim_node
