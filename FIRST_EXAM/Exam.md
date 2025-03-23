@@ -66,55 +66,175 @@ This repository contains ROS-based exercises involving turtle simulation. The ta
 
 ## Exercise 1: Five Turtles
 
-### Description
-This Python script is a ROS node that allows the user to control a turtle in the `turtlesim` simulation environment and spawn additional turtles at random positions. The user can move the turtle using keyboard inputs and spawn 5 turtles at random locations within the simulation workspace by pressing the `t` key.
 
-### Key Features:
-- **Turtle Control**:
-  - Move the turtle forward/backward in the X and Y directions.
-  - Rotate the turtle clockwise or counterclockwise.
-  - Stop the turtle's movement.
-- **Random Turtle Spawning**:
-  - Spawn 5 turtles at random positions and orientations within the workspace.
-  - Each turtle is given a unique name using a random integer.
-- **Exit**:
-  - Exit the program by pressing the `q` key.
+This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to move the main turtle in the X and Y directions, rotate it, stop it, and create five additional turtles at random positions within the workspace.
+
+---
+
+## Features
+
+- **Control of the Main Turtle**:  
+  The user can move the turtle in the X and Y directions, rotate it clockwise or counterclockwise, and stop its movement using specific keys.
+
+- **Creation of Random Turtles**:  
+  The program can create five additional turtles at random positions and orientations within the `turtlesim` workspace.
+
+- **Keyboard Interaction**:  
+  The program reads keys pressed by the user without requiring the Enter key, allowing for smoother interaction.
+
+- **Use of ROS Services**:  
+  The program uses the `Spawn` service of `turtlesim` to create new turtles at random positions.
+
+- **Message Publishing**:  
+  The program publishes `Twist` messages to the `/turtle1/cmd_vel` topic to control the movement of the main turtle.
+
+---
+
+## Controls
+
+| Key | Action                        |
+|-----|-------------------------------|
+| `x` | Move forward in X.            |
+| `y` | Move forward in Y.            |
+| `a` | Move backward in X.           |
+| `b` | Move backward in Y.           |
+| `z` | Rotate clockwise.             |
+| `r` | Rotate counterclockwise.      |
+| `s` | Stop all movement.            |
+| `t` | Create five random turtles.   |
+| `q` | Exit the program.             |
+
+---
+
+## Code Structure
+
+### Imports
+- ROS modules: `rospy`, `Twist`, `Pose`, and the `Spawn` service.
+- Python modules: `sys`, `termios`, `tty`, and `random`.
+
+### Functions
+- **`get_key()`**: Reads a key from the keyboard without requiring the Enter key.
+- **`spawn_turtle(x, y, theta)`**: Calls the `Spawn` service to create a new turtle at the specified position and orientation.
+
+### Main Function
+- Initializes the ROS node and configures the publisher to send `Twist` messages to the `/turtle1/cmd_vel` topic.
+- Displays a control menu in the console.
+- Enters an infinite loop where it waits for user input and performs the corresponding actions (movement, rotation, stop, create turtles, or exit).
 
 ---
 
 ## Exercise 2: Rhombus and Pentagon
 
-### Description
-This Python script is a ROS node that allows the user to draw geometric shapes (rhombus and pentagon) using the turtlesim simulation environment. The user can select a shape, define the initial position of the turtle, and the program will draw the selected shape if all its corners are within the workspace. The turtle is controlled using a Proportional (P) controller for smooth movement.
+This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to draw a rhombus and a pentagon in the `turtlesim` workspace based on the initial position provided by the user. The script uses proportional control to move the turtle precisely and includes an interactive menu for selecting the shape to draw.
 
-### Key Features:
-- **Shape Selection**:
-  -The user can choose between drawing a rhombus or a pentagon.
-- **Initial Position**:
-  - The user defines the initial position of the turtle.The program checks if all corners of the shape are within the workspace. If not, it notifies the user and requests a new position.Each turtle is given a unique name using a random integer.
-- **Drawing**:
-  - If all corners are within the workspace, the program draws the selected shape.
-  - The turtle's movement is controlled using a Proportional (P) controller for smooth transitions.
-- **Clear Screen:**:
-  - The screen is cleared before drawing a new shape by killing and respawning the turtle.
-- **Exit**:
-  - The user can exit the program by pressing the q key.
+---
+
+## Features
+
+- **Interactive Menu**:  
+  The program provides a console menu that allows the user to choose between drawing a rhombus, a pentagon, or exiting the program.
+
+- **Proportional Control**:  
+  The turtle is moved using proportional control (P) to ensure smooth and precise movement to the desired coordinates.
+
+- **Shape Drawing**:  
+  - **Rhombus**: Draws a rhombus of a defined size (`RHOMBUS_SIZE`) starting from the initial position provided by the user.
+  - **Pentagon**: Draws a pentagon of a defined size (`PENTAGON_SIZE`) starting from the initial position.
+
+- **Position Validation**:  
+  The program checks that the initial position and the corners of the shapes are within the `turtlesim` workspace (10x10 units). If any coordinate is out of range, the program displays an error message and does not proceed with the drawing.
+
+- **Screen Clearing**:  
+  Before drawing a new shape, the program clears the screen by deleting the current turtle and creating a new one at the center of the workspace.
+
+- **Pen Control**:  
+  The program activates and deactivates the turtle's pen to move it without drawing and then draw the lines of the shapes.
+
+---
+
+## Code Structure
+
+### Imports
+- ROS modules: `rospy`, `Twist`, `Pose`, and services like `Spawn`, `Kill`, and `SetPen`.
+- Python modules: `sys`, `termios`, `tty`, and `math`.
+
+### Global Variables
+- `AREA_WIDTH` and `AREA_HEIGHT`: Define the workspace dimensions (10x10 units).
+- `RHOMBUS_SIZE` and `PENTAGON_SIZE`: Define the sizes of the rhombus and pentagon.
+- `KP_LINEAR` and `KP_ANGULAR`: Proportional control gains for linear and angular movement.
+- `current_pose`: Stores the current position of the turtle.
+
+### Functions
+- **`get_key()`**: Reads a key from the keyboard without requiring the Enter key.
+- **`pose_callback(pose)`**: Updates the current position of the turtle.
+- **`move_to_position(pub, x, y, theta)`**: Moves the turtle to a specific position using proportional control.
+- **`set_pen(on)`**: Activates or deactivates the turtle's pen.
+- **`draw_line(pub, start_x, start_y, end_x, end_y)`**: Draws a line between two points.
+- **`draw_rhombus(pub, start_x, start_y)`**: Draws a rhombus starting from the initial position.
+- **`draw_pentagon(pub, start_x, start_y)`**: Draws a pentagon starting from the initial position.
+- **`clear_screen()`**: Clears the screen by deleting and recreating the turtle.
+
+### Main Function
+- Initializes the ROS node and sets up publishers and subscribers.
+- Displays an interactive menu for the user to choose between drawing a rhombus, a pentagon, or exiting the program.
+- Handles user input, validates the initial position, and draws the selected shape.
 
 ---
 
 ### Exercise 2: Square and Rhombus
 
-This exercise consists of a Python script that uses ROS to control a turtle in the `turtlesim` simulator. The program allows the user to draw a square or a rhombus in the workspace, based on the initial position provided. The code includes a proportional control system for precise turtle movement and an interactive menu to select the shape to draw.
+This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to draw a rhombus and a pentagon in the `turtlesim` workspace based on the initial position provided by the user. The script uses proportional control to move the turtle precisely and includes an interactive menu for selecting the shape to draw.
 
-#### Features:
-- Interactive menu to choose between drawing a square or a rhombus.
-- Proportional control for precise movements.
-- Coordinate validation to ensure shapes are within the workspace.
-- Screen clearing before drawing a new shape.
-- Pen activation and deactivation for drawing lines.
+---
 
-#### Execution:
-1. Ensure ROS is installed and configured.
-2. Run the `turtlesim` simulator.
-3. Run the Python script.
-4. Follow the menu instructions to draw the shapes.
+## Features
+
+- **Interactive Menu**:  
+  The program provides a console menu that allows the user to choose between drawing a rhombus, a pentagon, or exiting the program.
+
+- **Proportional Control**:  
+  The turtle is moved using proportional control (P) to ensure smooth and precise movement to the desired coordinates.
+
+- **Shape Drawing**:  
+  - **Rhombus**: Draws a rhombus of a defined size (`RHOMBUS_SIZE`) starting from the initial position provided by the user.
+  - **Pentagon**: Draws a pentagon of a defined size (`PENTAGON_SIZE`) starting from the initial position.
+
+- **Position Validation**:  
+  The program checks that the initial position and the corners of the shapes are within the `turtlesim` workspace (10x10 units). If any coordinate is out of range, the program displays an error message and does not proceed with the drawing.
+
+- **Screen Clearing**:  
+  Before drawing a new shape, the program clears the screen by deleting the current turtle and creating a new one at the center of the workspace.
+
+- **Pen Control**:  
+  The program activates and deactivates the turtle's pen to move it without drawing and then draw the lines of the shapes.
+
+---
+
+## Code Structure
+
+### Imports
+- ROS modules: `rospy`, `Twist`, `Pose`, and services like `Spawn`, `Kill`, and `SetPen`.
+- Python modules: `sys`, `termios`, `tty`, and `math`.
+
+### Global Variables
+- `AREA_WIDTH` and `AREA_HEIGHT`: Define the workspace dimensions (10x10 units).
+- `RHOMBUS_SIZE` and `PENTAGON_SIZE`: Define the sizes of the rhombus and pentagon.
+- `KP_LINEAR` and `KP_ANGULAR`: Proportional control gains for linear and angular movement.
+- `current_pose`: Stores the current position of the turtle.
+
+### Functions
+- **`get_key()`**: Reads a key from the keyboard without requiring the Enter key.
+- **`pose_callback(pose)`**: Updates the current position of the turtle.
+- **`move_to_position(pub, x, y, theta)`**: Moves the turtle to a specific position using proportional control.
+- **`set_pen(on)`**: Activates or deactivates the turtle's pen.
+- **`draw_line(pub, start_x, start_y, end_x, end_y)`**: Draws a line between two points.
+- **`draw_rhombus(pub, start_x, start_y)`**: Draws a rhombus starting from the initial position.
+- **`draw_pentagon(pub, start_x, start_y)`**: Draws a pentagon starting from the initial position.
+- **`clear_screen()`**: Clears the screen by deleting and recreating the turtle.
+
+### Main Function
+- Initializes the ROS node and sets up publishers and subscribers.
+- Displays an interactive menu for the user to choose between drawing a rhombus, a pentagon, or exiting the program.
+- Handles user input, validates the initial position, and draws the selected shape.
+
+---
