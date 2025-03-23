@@ -183,24 +183,24 @@ This exercise consists of a Python script that uses ROS (Robot Operating System)
 
 ### Exercise 2: Square and Rhomboid
 
-This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to draw a rhombus and a pentagon in the `turtlesim` workspace based on the initial position provided by the user. The script uses proportional control to move the turtle precisely and includes an interactive menu for selecting the shape to draw.
+This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to draw a square and a rhomboid in the `turtlesim` workspace based on the initial position provided by the user. The script uses proportional control to move the turtle precisely and includes an interactive menu for selecting the shape to draw.
 
 ---
 
 ## Features
 
 - **Interactive Menu**:  
-  The program provides a console menu that allows the user to choose between drawing a rhombus, a pentagon, or exiting the program.
+  The program provides a console menu that allows the user to choose between drawing a square, a rhomboid, or exiting the program.
 
 - **Proportional Control**:  
   The turtle is moved using proportional control (P) to ensure smooth and precise movement to the desired coordinates.
 
 - **Shape Drawing**:  
-  - **Rhombus**: Draws a rhombus of a defined size (`RHOMBUS_SIZE`) starting from the initial position provided by the user.
-  - **Pentagon**: Draws a pentagon of a defined size (`PENTAGON_SIZE`) starting from the initial position.
+  - **Square**: Draws a square of a defined size (`SQUARE_SIZE`) starting from the initial position provided by the user.
+  - **Rhomboid**: Draws a rhomboid with a defined base (`PARALLELOGRAM_BASE`), height (`PARALLELOGRAM_HEIGHT`), and angle (`PARALLELOGRAM_ANGLE`) starting from the initial position.
 
 - **Position Validation**:  
-  The program checks that the initial position and the corners of the shapes are within the `turtlesim` workspace (10x10 units). If any coordinate is out of range, the program displays an error message and does not proceed with the drawing.
+  The program checks that the initial position and the corners of the shapes are within the `turtlesim` workspace (11x11 units). If any coordinate is out of range, the program displays an error message and does not proceed with the drawing.
 
 - **Screen Clearing**:  
   Before drawing a new shape, the program clears the screen by deleting the current turtle and creating a new one at the center of the workspace.
@@ -217,8 +217,9 @@ This exercise consists of a Python script that uses ROS (Robot Operating System)
 - Python modules: `sys`, `termios`, `tty`, and `math`.
 
 ### Global Variables
-- `AREA_WIDTH` and `AREA_HEIGHT`: Define the workspace dimensions (10x10 units).
-- `RHOMBUS_SIZE` and `PENTAGON_SIZE`: Define the sizes of the rhombus and pentagon.
+- `AREA_WIDTH` and `AREA_HEIGHT`: Define the workspace dimensions (11x11 units).
+- `SQUARE_SIZE`: Defines the size of the square.
+- `PARALLELOGRAM_BASE`, `PARALLELOGRAM_HEIGHT`, and `PARALLELOGRAM_ANGLE`: Define the dimensions of the rhomboid.
 - `KP_LINEAR` and `KP_ANGULAR`: Proportional control gains for linear and angular movement.
 - `current_pose`: Stores the current position of the turtle.
 
@@ -228,13 +229,13 @@ This exercise consists of a Python script that uses ROS (Robot Operating System)
 - **`move_to_position(pub, x, y, theta)`**: Moves the turtle to a specific position using proportional control.
 - **`set_pen(on)`**: Activates or deactivates the turtle's pen.
 - **`draw_line(pub, start_x, start_y, end_x, end_y)`**: Draws a line between two points.
-- **`draw_rhombus(pub, start_x, start_y)`**: Draws a rhombus starting from the initial position.
-- **`draw_pentagon(pub, start_x, start_y)`**: Draws a pentagon starting from the initial position.
+- **`draw_square(pub, start_x, start_y)`**: Draws a square starting from the initial position.
+- **`draw_parallelogram(pub, start_x, start_y)`**: Draws a rhomboid starting from the initial position.
 - **`clear_screen()`**: Clears the screen by deleting and recreating the turtle.
 
 ### Main Function
 - Initializes the ROS node and sets up publishers and subscribers.
-- Displays an interactive menu for the user to choose between drawing a rhombus, a pentagon, or exiting the program.
+- Displays an interactive menu for the user to choose between drawing a square, a rhomboid, or exiting the program.
 - Handles user input, validates the initial position, and draws the selected shape.
 
 ---
