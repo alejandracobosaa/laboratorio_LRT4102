@@ -181,7 +181,7 @@ This exercise consists of a Python script that uses ROS (Robot Operating System)
 
 ---
 
-### Exercise 2: Square and Rhombus
+### Exercise 2: Square and Rhomboid
 
 This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to draw a rhombus and a pentagon in the `turtlesim` workspace based on the initial position provided by the user. The script uses proportional control to move the turtle precisely and includes an interactive menu for selecting the shape to draw.
 
