@@ -239,3 +239,63 @@ This exercise consists of a Python script that uses ROS (Robot Operating System)
 - Handles user input, validates the initial position, and draws the selected shape.
 
 ---
+
+### Exercise 2: Triangle and Isosceles Trapezoid
+
+This exercise consists of a Python script that uses ROS (Robot Operating System) to control a turtle in the `turtlesim` simulator. The program allows the user to draw an equilateral triangle and an isosceles trapezoid in the `turtlesim` workspace based on the initial position provided by the user. The script uses proportional control to move the turtle precisely and includes an interactive menu for selecting the shape to draw.
+
+---
+
+## Features
+
+- **Interactive Menu**:  
+  The program provides a console menu that allows the user to choose between drawing an equilateral triangle, an isosceles trapezoid, or exiting the program.
+
+- **Proportional Control**:  
+  The turtle is moved using proportional control (P) to ensure smooth and precise movement to the desired coordinates.
+
+- **Shape Drawing**:  
+  - **Equilateral Triangle**: Draws an equilateral triangle with a defined base size (`BASE_SIZE`) starting from the initial position provided by the user.
+  - **Isosceles Trapezoid**: Draws an isosceles trapezoid with a defined base size (`BASE_SIZE`), height (`TRAPEZOID_HEIGHT`), and a smaller top base starting from the initial position.
+
+- **Position Validation**:  
+  The program checks that the initial position and the corners of the shapes are within the `turtlesim` workspace (11x11 units). If any coordinate is out of range, the program displays an error message and does not proceed with the drawing.
+
+- **Screen Clearing**:  
+  Before drawing a new shape, the program clears the screen by deleting the current turtle and creating a new one at the center of the workspace.
+
+- **Pen Control**:  
+  The program activates and deactivates the turtle's pen to move it without drawing and then draw the lines of the shapes.
+
+---
+
+## Code Structure
+
+### Imports
+- ROS modules: `rospy`, `Twist`, `Pose`, and services like `Spawn`, `Kill`, and `SetPen`.
+- Python modules: `sys`, `termios`, `tty`, and `math`.
+
+### Global Variables
+- `AREA_WIDTH` and `AREA_HEIGHT`: Define the workspace dimensions (11x11 units).
+- `BASE_SIZE`: Defines the base size for both the triangle and trapezoid.
+- `TRAPEZOID_HEIGHT`: Defines the height of the trapezoid.
+- `KP_LINEAR` and `KP_ANGULAR`: Proportional control gains for linear and angular movement.
+- `current_pose`: Stores the current position of the turtle.
+
+### Functions
+- **`get_key()`**: Reads a key from the keyboard without requiring the Enter key.
+- **`pose_callback(pose)`**: Updates the current position of the turtle.
+- **`move_to_position(pub, x, y, theta)`**: Moves the turtle to a specific position using proportional control.
+- **`set_pen(on)`**: Activates or deactivates the turtle's pen.
+- **`draw_line(pub, start_x, start_y, end_x, end_y)`**: Draws a line between two points.
+- **`draw_triangle(pub, start_x, start_y)`**: Draws an equilateral triangle starting from the initial position.
+- **`draw_trapezoid(pub, start_x, start_y)`**: Draws an isosceles trapezoid starting from the initial position.
+- **`clear_screen()`**: Clears the screen by deleting and recreating the turtle.
+
+### Main Function
+- Initializes the ROS node and sets up publishers and subscribers.
+- Displays an interactive menu for the user to choose between drawing an equilateral triangle, an isosceles trapezoid, or exiting the program.
+- Handles user input, validates the initial position, and draws the selected shape.
+
+---
+
