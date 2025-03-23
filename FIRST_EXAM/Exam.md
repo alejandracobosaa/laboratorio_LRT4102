@@ -55,7 +55,7 @@ Create a ROS-based program that allows the user to select and draw geometric sha
 4. **Repository**: The repository should follow the structure used in previous practices.
 
 ---
-# ROS Turtle Exercises
+# Exercises
 
 This repository contains ROS-based exercises involving turtle simulation. The tasks are divided into two main parts:
 
