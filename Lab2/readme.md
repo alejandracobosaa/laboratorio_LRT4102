@@ -19,21 +19,8 @@ This repository demonstrates a basic **Publisher-Subscriber** model using **ROS 
 - ROS handles message transport efficiently, ensuring that messages are delivered as long as both nodes are active and properly connected.
 
 ## Use Case
-This setup is commonly used in **robotics** to transmit sensor data, commands, or status updates between different components of a robotic system.
+This setup is commonly used in robotics to transmit sensor data, commands, or status updates between different components of a robotic system.
 
-## How to Run
-1. Initialize ROS:
-   ```sh
-   roscore
-   ```
-2. Run the talker node:
-   ```sh
-   rosrun <your_package> talker.py
-   ```
-3. Run the listener node:
-   ```sh
-   rosrun <your_package> listener.py
-   ```
 ## How it runs
 When talker and listener are running at the same time:
 ![image](https://github.com/user-attachments/assets/2836d853-8fa1-42f3-a87c-adb0ddcb43c0)
@@ -52,7 +39,8 @@ The system's performance was evaluated using three different control strategies:
 ![image](https://github.com/user-attachments/assets/cb1fccfc-1cc9-4c9f-b31a-1c955e4f5423)
 
 - **Proportional-Derivative (PD) Controller**
-![image](https://github.com/user-attachments/assets/259cc3b6-2554-4c63-a142-958535ace3a9)
+![image](https://github.com/user-attachments/assets/2fddc250-71bf-433b-8a07-6025ce8f3358)
+
 
 - **Proportional-Integral-Derivative (PID) Controller**
 ![image](https://github.com/user-attachments/assets/c1ec216b-41fc-4eab-8f1c-8fbf116d77d2)
