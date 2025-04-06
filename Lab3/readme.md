@@ -14,3 +14,10 @@ The **DTG** is simply the distance between the current position of the turtle (`
 ```python
 distancia = math.sqrt(error_x**2 + error_y**2)
 
+Where:
+
+error_x = x_obj - pose_actual.x
+
+error_y = y_obj - pose_actual.y
+
+Once the distance is calculated, the KP_LINEAR constant (a proportional gain) is used to determine the linear velocity of the turtle (msg.linear.x), which is proportional to the distance to the goal. In other words, the turtle will move faster when it's farther from the target and slow down as it approaches the target.
