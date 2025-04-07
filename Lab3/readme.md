@@ -66,6 +66,3 @@ This ensures that the turtle adjusts its rotation based on the difference in ang
 - When the turtle is close to the target (small DTG), the linear velocity decreases until it stops.
 
 - When the turtle is not aligned with the target (large ATG), it will rotate until it is correctly oriented.
-
-This proportional control approach ensures that the turtle moves efficiently towards the target while adjusting its orientation as it gets closer.
-
